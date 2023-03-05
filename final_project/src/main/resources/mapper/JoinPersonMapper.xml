@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.finalpj.repository.JoinPersonDAO">
+	<insert id="insertJp">
+		insert into joinperson(email, grno, sno) values(#{email}, #{grno}, #{sno})
+	</insert>
+	<select id="selectList" resultType="com.ezen.finalpj.domain.JoinPersonDTO">
+		select joinperson.jno as jno, schedule.sno as sno, user.email as uEmail, user.name as uName, profile.name as pName, profile.dir  as pDir, profile.uuid as pUuid from joinperson 
+		join schedule on schedule.sno=joinperson.sno 
+		join user on user.email=joinperson.email 
+		join profile on profile.email=user.email
+	</select>
+	<delete id="deleteJp">
+		delete from joinperson where jno=#{jno}
+	</delete>
+	<select id="selectSno" resultType="int">
+		select sno from joinperson where jno=#{jno}
+	</select>
+</mapper>

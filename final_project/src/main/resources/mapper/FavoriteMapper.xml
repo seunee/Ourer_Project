@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ezen.finalpj.repository.FavoriteDAO">
+	<select id="selectFavorite" resultType="int">
+		select count(fno) from favorite where grno=#{grno} and email=#{email}
+	</select>
+	<delete id="deleteFavorite">
+		delete from favorite where grno=#{grno} and email=#{email}
+	</delete>
+	<insert id="insertFavorite">
+		insert into favorite(grno, email) values(#{grno}, #{email})
+	</insert>
+	<select id="selectListFavorite" resultType="com.ezen.finalpj.domain.FavoriteVO">
+		select * from favorite where grno=#{grno}
+	</select>
+		<select id="selectGroupList" resultType="com.ezen.finalpj.domain.GroupVO">
+		select * from smallgroup join favorite on smallgroup.grno = favorite.grno where favorite.email = #{email}
+	</select>
+	<select id="selectFavoriteList" resultType="com.ezen.finalpj.domain.FavoriteDTO">
+		select smallgroup.grno as grno, category.name as ctname, smallgroup.name as gname, smallgroup.detail as gdetail from smallgroup
+		join category on category.ctno=smallgroup.ctno join favorite on favorite.grno=smallgroup.grno where favorite.email=#{email}
+	</select>
+	<select id="selectFList" resultType="com.ezen.finalpj.domain.FavoriteVO">
+		select * from favorite where email=#{email}
+	</select>
+	<select id="selectmyGname" resultType="String">
+		select name from smallgroup where email=#{email}
+	</select>
+</mapper>

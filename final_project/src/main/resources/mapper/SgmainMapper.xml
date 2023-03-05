@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.finalpj.repository.SgmainDAO">
+	<select id="getSgmain" resultType="com.ezen.finalpj.domain.SgMainVO">
+		select * from sgmain where grno=#{grno}
+	</select>
+	<select id="getSgMainImg" resultType="com.ezen.finalpj.domain.SgMainVO">
+		select S.uuid, S.dir, S.name, SG.grno, SG.name AS sg_name, SG.detail, SG.city, SG.county from smallgroup SG left join sgmain S on S.grno = SG.grno
+	</select>
+	
+	   <select id="getSgMainImgSearching" resultType="com.ezen.finalpj.domain.SgMainVO">
+      select S.uuid, S.dir, S.name, SG.grno, SG.name AS sg_name, SG.detail, SG.city, SG.county 
+      from smallgroup SG left join sgmain S on S.grno = SG.grno where SG.grno is not null
+      <include refid="search"></include>
+   </select>
+   
+   
+   <sql id="search">
+      <if test="type !=null">
+         <trim prefix="and (" suffix=")" prefixOverrides="OR">
+            <foreach collection="typeToArray" item="type">
+               <trim prefix="OR">
+                  <choose>
+                     <when test="type =='n'.toString()">
+                        SG.name like concat('%',#{keyword},'%')  
+                     </when>
+                     <when test="type =='d'.toString()">
+                        detail like concat('%',#{keyword},'%')  
+                     </when>
+                     <when test="type =='a'.toString()">
+                        SG.name like concat('%',#{keyword},'%')  
+                        or detail like concat('%',#{keyword},'%') 
+                     </when>
+                  </choose>
+               </trim>
+            </foreach>
+         </trim>
+      </if>
+   </sql>
+</mapper>

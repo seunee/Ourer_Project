@@ -1,0 +1,145 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+}
+body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+section{
+    flex: 1;
+}
+nav, footer, section{
+    width: 1050px;
+    margin: 0 auto;
+}
+nav, section{
+    font-family: SF_HailSnow;
+}
+.container-fluid{
+    margin: 0 auto;
+}
+nav > .logo{
+   margin: 0px 0px 0px 190px;
+}
+.container-fluid>.d-flex>.me-2{
+   width: 400px;
+}
+.container-fluid > .d-flex{
+   margin: 0 auto;
+}
+.nav > .nav-item >.nav-link{
+   color: black;
+}
+.navbar>.container-fluid-start>.navbar-toggler{
+	border: none;
+}
+.navbar>.container-fluid-start>.navbar-toggler:focus{
+	box-shadow: none;
+}
+.container-fluid>.d-flex>.btn-outline-warning {
+    --bs-btn-hover-color: white;
+    --bs-btn-active-color: white;
+}
+.imgname{
+   width: 30%;
+   margin: 0 auto;
+   padding-top:10px;
+   border-bottom: 1px solid #595959;
+   text-align: center;
+}
+footer{
+	padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    height: 180px;
+}
+.rightUl{
+    list-style: none;
+    margin: 0;
+    width: 100%;
+    height: 30px;
+    padding: 0;
+}
+.rightLi{
+    float: left;
+    margin-right: 20px;
+}
+.rightLi>a{
+	text-decoration: none;
+	color: black;
+	font-size: 0.8em;
+	
+}
+.rightLi::after{
+    clear: both;
+}
+.leftBox{
+    width: 440px;
+}
+.rightBox{
+    width: 390px;
+}
+.leftInner>span{
+	font-size: 0.8em;
+}
+.rightInner>span{
+	font-size: 0.8em;
+	
+}
+.snsBox{
+	margin-top: 15px;
+}
+.snsBox>i{
+	margin-right: 10px;
+}
+@font-face {
+    font-family: diary;
+    src: url(/resources/font/EF_Diary.ttf);
+}
+@font-face {
+    font-family: 'SF_HailSnow';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HailSnow.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.offcanvas-body>.navbar-nav>.nav-item>a{
+	color: black;
+}
+.offcanvas-body>.navbar-nav>.nav-item{
+	margin-top: 10px;
+	margin-left: 10px;
+}
+#offcanvasNavbarLabel{
+	font-weight: 700;
+}
+.leftBox>.h2{
+	font-family: SF_HailSnow;
+	font-weight: 700;
+}
+#imgname{
+	font-size: 1.2em;
+}
+.input-group{
+   justify-content: center;
+}
+
+#seachInput{
+	width: 350px;
+   border:1px solid #aeaeae;
+   border-radius: 0 0.375rem 0.375rem 0;
+}
+.input-group>.d-flex>.form-select{
+	width: 130px;
+    border-radius: 0.375rem 0 0 0.375rem;
+   border:1px solid #aeaeae;
+	padding: 3px 10px;
+	border-right: none;
+}

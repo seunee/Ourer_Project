@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.finalpj.repository.UserDAO">
+	<update id="updateCap">
+		update user set isCap=#{grno} where email=#{email}
+	</update>
+	<!-- <select id="selectMemListUser" resultType="com.ezen.finalpj.domain.UserVO">
+		select * from user join waiting on user.email=waiting.email where grno=#{grno} and isOk=1;
+	</select> -->
+
+	
+	<select id="getUser" resultType="com.ezen.finalpj.domain.UserVO"> 
+      select * ,(select code from category where category.ctno = user.ctno_1) as "ctcode_1" 
+      ,(select code from category where category.ctno = user.ctno_2) as "ctcode_2" 
+      ,(select code from category where category.ctno = user.ctno_3) as "ctcode_3" from user where email = #{email}
+   </select>
+   
+   <insert id="insertUser" parameterType="com.ezen.finalpj.domain.UserVO"> 
+      insert into user (email, name, pw, area, nickname, age, gender, phone, ctno_1, ctno_2, ctno_3) 
+      value (#{email}, #{name}, #{pw}, #{area}, #{nickname}, #{age}, #{gender}, #{phone}, #{ctno_1},#{ctno_2},#{ctno_3}) 
+   </insert>
+	
+	<resultMap type="com.ezen.finalpj.domain.UserVO" id="test">
+		<result property="email" column="email"/>
+		<result property="name" column="name"/>
+		<result property="pw" column="pw"/>
+		<result property="area" column="area"/>
+		<result property="nickname" column="nickname"/>
+		<result property="age" column="age"/>
+		<result property="gender" column="gender"/>
+		<result property="phone" column="phone"/>
+		<result property="isDel" column="isDel"/>
+		<result property="ctno_1" column="ctno_1"/>
+		<result property="ctno_2" column="ctno_2"/>
+		<result property="ctno_3" column="ctno_3"/>
+		<result property="isCap" column="isCap"/>
+		<collection property="waitList" column="email=email" javaType="List" ofType="WaitingVO" select="selectOnlyUser"/>
+	</resultMap>
+
+	<select id="selectOnlyUser" resultType="com.ezen.finalpj.domain.UserVO" resultMap="test">
+		select * from user join waiting on user.email=waiting.email where isOk=0 and grno=#{isCap}
+	</select>
+
+	<select id="selectSecoundUser" resultType="com.ezen.finalpj.domain.UserVO" resultMap="test">
+		select * from user join waiting on user.email=waiting.email where isOk=1 and grno=#{isCap}
+	</select>
+	<update id="updateMyinfo">
+		update user set area=#{area}, phone=#{phone}, ctno_1=#{ctno_1}, ctno_2=#{ctno_2}, ctno_3=#{ctno_3} where email=#{email}
+	</update>
+	
+	<select id="selectCap" resultType="com.ezen.finalpj.domain.UserVO">
+		select * from user where isCap=${grno}
+	</select>
+	
+	<select id="selectMemList" resultType="com.ezen.finalpj.domain.UserVO">
+		select user.* from user join waiting on waiting.email=user.email where waiting.grno=#{grno} and waiting.isOk=1;
+	</select>
+	
+	<select id="emailCheck" parameterType="String" resultType="int">
+		select count(email) from user where email = #{email}
+	</select>
+	<select id="nicknameCheck" parameterType="String" resultType="int">
+		select count(*) from user where nickname = #{nickname}
+	</select>
+	
+	<select id="selectAllList" resultType="com.ezen.finalpj.domain.UserVO">
+		select * from user
+	</select>
+	
+	<delete id="deleteUser">
+		delete from user where email=#{email}
+	</delete>
+	
+	
+	<select id="selectFList" resultType="com.ezen.finalpj.domain.FavoriteVO">
+		select * from favorite where email=#{email}
+	</select>
+	<select id="selectUList" resultType="com.ezen.finalpj.domain.FavoriteDTO">
+		select smallgroup.grno as grno, category.name as ctname, smallgroup.name as gname, waiting.grade as wgrade from category
+		join smallgroup on category.ctno = smallgroup.ctno
+		join waiting on smallgroup.grno = waiting.grno
+		where waiting.email=#{email}
+	</select>
+	<select id="selectmyGname" resultType="String">
+		select name from smallgroup where email=#{email}
+	</select>
+	   <select id="getWaitingList" resultType="com.ezen.finalpj.domain.WaitingVO">
+      select * from user join waiting on user.email=waiting.email where isOk=1 and grno=#{isCap}
+   </select>
+   <insert id="insertBlankProf">
+   	insert into profile(email) values(#{email})
+   </insert>
+   <delete id="userRemove">
+      delete from user where email=#{email}
+   </delete>
+</mapper>

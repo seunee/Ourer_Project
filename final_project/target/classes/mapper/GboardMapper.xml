@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.finalpj.repository.GboardDAO">
+	<select id="selectListGbrd" resultType="com.ezen.finalpj.domain.GboardVO">
+		select * from gboard where grno=#{grno} order by regdate desc limit #{startIndex}, #{qty}
+	</select>
+	<insert id="insertGbrd">
+		insert into gboard(title, content, writer, cate, grno) values(#{title}, #{content}, #{writer}, #{cate}, #{grno})
+	</insert>
+	<select id="selectDetailGbrd" resultType="com.ezen.finalpj.domain.GboardVO">
+		select * from gboard where gbno=#{gbno}
+	</select>
+	<update id="updateViewGbrd">
+		update gboard set view=view+1 where gbno=#{gbno}
+	</update>
+	<update id="updateGbrd">
+		update gboard set title=#{title}, content=#{content}, cate=#{cate}, regdate=now() where gbno=#{gbno}
+	</update>
+	<delete id="deleteGbrd">
+		delete from gboard where gbno=#{gbno}
+	</delete>
+	<select id="selectMaxGbno" resultType="int">
+		select max(gbno) from gboard
+	</select>
+	<select id="getTotalPage" resultType="int">
+		select count(gbno) from gboard where grno=#{grno}
+	</select>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.finalpj.repository.CommentDAO">
+	<insert id="insertCmt">
+		insert into comment(gbno, writer, content) values(#{gbno}, #{writer}, #{content})
+	</insert>
+	<select id="selectListCmt" resultType="com.ezen.finalpj.domain.CommentVO">
+		select * from comment where gbno=#{gbno}
+	</select>
+	<update id="updateCmt">
+		update comment set content=#{content}, regdate=now() where cno=#{cno}
+	</update>
+	<delete id="deleteCmt">
+		delete from comment where cno=#{cno}
+	</delete>
+</mapper>

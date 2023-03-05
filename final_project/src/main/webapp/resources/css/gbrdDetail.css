@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+.ms-2{
+    width: 100%;
+
+}
+li>.ms-2>.upperBox{
+    display: flex;
+    justify-content: space-between;
+}
+.rightCmtBox{
+	width: 145px;
+}
+.dropdown{
+	margin: 0;
+    margin-top: 5px;
+	float: right;
+}
+
+.firstBox{
+	margin-top: 30px;
+}
+
+.grpName{
+	font-weight: bold;
+	text-shadow: #FFD34A 2px 2px 5px;
+	
+}
+
+.nav-item > .groupNav{
+	margin-left: 50px;
+}
+
+
+div.col-sm-10{
+	width: 220px;
+}
+
+.content{
+	margin-top: 20px;
+}
+
+.upperBox{
+	height: 30px;
+}
+
+.cmtTextVal{
+	font-size: 1.2em;
+}
+.text-body-tertiary{
+	font-size: 0.8em;
+}
+.btn.dropBtn{
+	height: 25px;
+	/*--bs-btn-color: #ffc107;*/
+	--bs-btn-border-color: none;
+}
+
+.infoBox{
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 10px;
+	border-bottom: 1px solid gainsboro;
+}
+
+.infoInner{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
+}
+.infoInner>span{
+	width: 70px;
+	flex-grow: 0;
+	font-weight: bold;
+}
+#view{
+	width: 50px;
+}
+#writer{
+	width: 120px;
+}
+#regdate{
+	width: 210px;
+}
+.titleBox{
+	width: 100%;
+}
+#title{
+	width: 100%;
+}
+.text-end, .cmtOuter{
+	width: 700px;
+	margin: auto;
+}
+.imgBox{
+	margin-top: 20px;
+}
+.imgBox>img{
+	width: 700px;
+	height: 500px;
+}

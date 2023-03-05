@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.finalpj.repository.CategoryDAO">
+	<select id="getCategoryList" resultType="com.ezen.finalpj.domain.CategoryVO">
+		select 
+			S.uuid, S.dir, S.name AS sm_name, SG.grno, SG.name AS sg_name, SG.detail, SG.city, SG.county, C.code 
+			from  smallgroup SG 
+			left join category C
+			on C.ctno = SG.ctno 
+			left join sgmain S 
+			on S.grno = SG.grno 
+			where C.code = #{code}
+	</select>
+	
+	<select id="getCateNameList" resultType="com.ezen.finalpj.domain.CategoryVO">
+		select * from category join smallgroup on category.ctno = smallgroup.ctno where category.name = #{name}
+	</select>
+	
+	<select id="getCategoryDetailList" resultType="com.ezen.finalpj.domain.CategoryVO">
+		select name from category where code = #{code}
+	</select>
+	
+	<select id="getCategoryCode" resultType="String">
+		select code from category where name = #{name}
+	</select>
+	
+	<select id="getCategoryOne" resultType="com.ezen.finalpj.domain.CategoryVO">
+				select 
+			S.uuid, S.dir, S.name AS sm_name, SG.grno, SG.name AS sg_name, SG.detail, SG.city, SG.county, C.code 
+			from  smallgroup SG 
+			left join category C
+			on C.ctno = SG.ctno 
+			left join sgmain S 
+			on S.grno = SG.grno 
+			where C.name = #{name}
+	</select>
+	<select id="getCategoryOneRandom" resultType="com.ezen.finalpj.domain.CategoryVO">
+		select 
+			S.uuid, S.dir, S.name AS sm_name, SG.grno, SG.name AS sg_name, SG.detail, SG.city, SG.county, C.code
+			from  smallgroup SG 
+			left join category C
+			on C.ctno = SG.ctno 
+			left join sgmain S 
+			on S.grno = SG.grno 
+	</select>
+	<select id="selectRecoList" resultType="com.ezen.finalpj.domain.CategoryVO">
+		select 
+		S.uuid, S.dir, S.name AS sm_name, SG.grno, SG.name AS sg_name, SG.detail, SG.city, SG.county, C.code
+			from  smallgroup SG 
+			left join category C
+			on C.ctno = SG.ctno 
+			left join sgmain S 
+			on S.grno = SG.grno 
+			where SG.county=#{county}
+	</select>
+</mapper>

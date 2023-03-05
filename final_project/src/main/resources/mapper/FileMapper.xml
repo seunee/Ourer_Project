@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.finalpj.repository.FileDAO">
+	<insert id="insertFile">
+		insert into file(gbno, size, name, dir, uuid) values(#{gbno}, #{size}, #{name}, #{dir}, #{uuid})
+	</insert>
+	<select id="selectFile" resultType="com.ezen.finalpj.domain.FileVO">
+		select * from file where gbno=#{gbno}
+	</select>
+	<delete id="deleteFile">
+		delete from file where uuid=#{uuid}
+	</delete>
+	<update id="updateFile">
+		update file set size=#{size}, name=#{name}, dir=#{dir}, uuid=#{uuid} where gbno=#{gbno}
+	</update>
+</mapper>

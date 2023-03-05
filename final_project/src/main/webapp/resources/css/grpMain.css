@@ -1,0 +1,141 @@
+@charset "UTF-8";
+.joinPeople{
+	margin-top: 15px;
+	display: none;
+	/* border: 1px solid black; */
+	width: 570px;
+	/* height: 300px; */
+}
+
+.firstBox{
+	margin-top: 30px;
+	width: 90%;
+	float: left;
+}
+
+.grpName{
+	font-weight: bold;
+	text-shadow: #FFD34A 2px 2px 5px;
+	
+}
+.firstsBox{
+	margin-top: 30px;
+	width: 10%;
+	float: right;
+}
+.grpNavLi > button{
+	border: none;
+	width: 50px;
+	height: 50px;
+	background-color: #fff;
+}
+.grpNavLi > button > i{
+	font-size: 30px;
+}
+.grpNavLi > button > .fa-heart{
+	color: #FFD34A;
+}
+.nav-item > .groupNav{
+	margin-left: 50px;
+}
+/* .imgBox > img{
+	margin: 10px auto;
+} */
+.imgBox>img{
+	width: 1050px;
+	height: 500px;
+}
+.descBox{
+	margin: 20px auto;
+	width: 1000px;
+}
+.secondBox{
+	margin: 20px auto;
+	width: 1000px;
+}
+h3{
+	font-weight: bold;
+}
+.scheInfo > button{
+	border: none;
+}
+.mark{
+	background-color: #FFD34A;
+}
+.scheBox{
+	display: flex;
+	justify-content: space-between;
+	width: 750px;
+	
+}
+
+.scheBox>.scheTitle{
+	width: 160px;
+	height: 160px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	border: 2px dashed gray;
+	border-radius: 20px;
+}
+
+.descBox>.detail{
+	margin-top: 50px;
+	margin-bottom: 50px;
+	/*height: 250px;*/
+}
+.joinPerson>img{
+	width: 75px;
+	height: 75px;
+	margin: 20px;
+}
+.joinPerson>button{
+	margin-left: 10px;
+}
+
+.joinPerson{
+	width: 280px;
+	height: 115px;
+	margin: 0;
+	
+}
+.joinPerson>.jpName{
+	margin-left: 5px;
+}
+.scheInner{
+	width: 570px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.showBtn{
+	margin-left: 20px;
+}
+.scheInfo>li{
+	list-style: none;
+}
+.scheBox{
+	margin-top: 20px;
+}
+.scheInfo{
+	width: 100%;
+	padding: 0;
+}
+.imgBox>form>a{
+	text-decoration: none;
+}
+
+.d-inline{
+	margin-left: 10px;
+}
+.fa-calendar-check{
+	margin-right: 10px;
+}
+.secondTitle>span{
+	font-weight: 700;
+}
+.d-grid.gap-2>a>button{
+	width: 100%;
+}
